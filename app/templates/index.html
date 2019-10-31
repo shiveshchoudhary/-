@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+</head>
+  <body>
+    <form method="POST" action="./logout">
+      <input type="submit" value="Signout" align="center">
+    </form>
+    <form method="POST" action="/acc">
+
+    	<h1><pre>
+          _______  _______  _______          ______   _______ _________ _______  ______   _______  _______  _______ 
+|\     /|(  ____ \(  ____ \(  ____ )        (  __  \ (  ___  )\__   __/(  ___  )(  ___ \ (  ___  )(  ____ \(  ____ \
+| )   ( || (    \/| (    \/| (    )|        | (  \  )| (   ) |   ) (   | (   ) || (   ) )| (   ) || (    \/| (    \/
+| |   | || (_____ | (__    | (____)|        | |   ) || (___) |   | |   | (___) || (__/ / | (___) || (_____ | (__    
+| |   | |(_____  )|  __)   |     __)        | |   | ||  ___  |   | |   |  ___  ||  __ (  |  ___  |(_____  )|  __)   
+| |   | |      ) || (      | (\ (           | |   ) || (   ) |   | |   | (   ) || (  \ \ | (   ) |      ) || (      
+| (___) |/\____) || (____/\| ) \ \__        | (__/  )| )   ( |   | |   | )   ( || )___) )| )   ( |/\____) || (____/\
+(_______)\_______)(_______/|/   \__/        (______/ |/     \|   )_(   |/     \||/ \___/ |/     \|\_______)(_______/
+                                                                                                                   
+
+    	</pre></h1>
+    	<table align="center" border = 1>
+    	<tr>
+    		<td>Eid</td>
+    		<td>Name</td>
+    		<td>Email</td>
+    		<td>Salary</td>
+    		<td>Joining date</td>
+    	</tr>
+		{% for user in users %}
+			<tr>
+				<td>{{user.eid}}</td> 
+				<td>{{user.name}}</td>
+				<td>{{user.email}}</td>
+				<td>{{user.pay_amount}}</td>
+				<td>{{user.joining_date}}</td>
+			</tr>
+		{% endfor %}
+		</table>
+		<br>
+      <input type="text" name="eid" placeholder="eid" autocomplete="off">
+      <input type="text" name="name" placeholder="name" autocomplete="off">
+      <input type="text" name="mail" placeholder="e-mail" autocomplete="off">
+      <input type="text" name="pay_amount" placeholder="Salary" autocomplete="off">
+      <input type="text" name="doj" placeholder="join date" autocomplete="off">
+      <input type="submit" value="Add">
+
+    </form>
+    <br>
+
+  	<form method="POST" action="./update">
+    	<input type="text" name="old_eid" placeholder="old eid" autocomplete="off">
+    	<input type="text" name="update_eid" placeholder="eid" autocomplete="off">
+        <input type="text" name="update_name" placeholder="name" autocomplete="off">
+        <input type="text" name="update_mail" placeholder="email" autocomplete="off">
+        <input type="text" name="update_pay_amount" placeholder="Salary" autocomplete="off">
+        <input type="text" name="update_doj" placeholder="join date" autocomplete="off">
+    	<input type="submit" value="Update">
+  	</form>
+  	<br>
+
+    <form method="POST" action="./delete">
+	<input type="text" name="del_title" placeholder="eno" autocomplete="off">
+  	<input type="submit" value="Delete">
+	</form>
+
+  </body>
+</html>
